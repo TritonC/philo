@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:04:39 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/22 12:38:54 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:16:30 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ char	**split_argv(char **argv)
 	return (split);
 }
 
-t_philo	*init_values(char *argv[])
+void	init_values(t_philo *philo, char *argv[])
 {
-	t_philo	*philo;
-	char	**argv_split;
-	int		i;
+	char			**argv_split;
+	long long		i;
 
-	i = 1;
 	philo = ft_calloc(sizeof(t_philo), 1);
 	argv_split = split_argv(argv);
+	i = ft_atoi(argv[1]);
+	if (i <= 0 || i > 300)
+		return ;
 	philo->philo_id = ft_calloc(sizeof(int), ft_atoi(argv[1]));
 	philo->rules.t_to_die = ft_atoi(argv[2]);
 	philo->rules.t_to_eat = ft_atoi(argv[3]);
@@ -47,5 +48,4 @@ t_philo	*init_values(char *argv[])
 		philo->rules.eat_times = ft_atoi(argv[5]);
 	else
 		philo->rules.eat_times = -1;
-	return (philo);
 }

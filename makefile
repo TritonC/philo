@@ -6,7 +6,7 @@
 #    By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:22:32 by mluis-fu          #+#    #+#              #
-#    Updated: 2023/03/22 12:10:00 by mluis-fu         ###   ########.fr        #
+#    Updated: 2023/03/22 14:24:40 by mluis-fu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CHECKER = checker
 
 CC = gcc
 
-INCLUDES = -I inc -I inc/libft/include
+INCLUDES = -I inc
 
 CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3
 
@@ -26,7 +26,7 @@ BONUS_SRC = bonus
 
 CHECKER_FILE = src/checker.c
 
-SRC_FILES = main.c parser.c
+SRC_FILES = main.c parser.c utils.c ft_split.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
@@ -42,14 +42,10 @@ BONUS_OBJ = $(addprefix $(BONUS_DIR)/, $(BONUS_FILES))
 
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
 
-LIBFT-DIR = inc/libft
-
-LIBFT_MAKE = inc/libft/libft.a
-
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT_MAKE)
-	@$(CC) $(CFLAGS) $(LIBFT_MAKE) -o $(NAME) $(OBJECTS) 
+$(NAME): $(OBJECTS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) 
 
 ${CHECKER}: ${BONUS_OBJ} ${LIBFT_MAKE}
 		$(CC) $(CFLAGS) $(LIBFT_MAKE) -o ${CHECKER} $(BONUS_OBJ)
@@ -62,19 +58,13 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(LIBFT_MAKE): | $(LIBFT-DIR)
-	@make -C $(LIBFT-DIR)
-
 bonus: ${CHECKER}
 
 clean:
-	@rm -rf push_swap.dSYM
-	@make clean -C $(LIBFT-DIR)
 	@rm -rf $(BONUS_DIR)
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@make fclean -C $(LIBFT-DIR)
 	@rm -f $(NAME) $(CHECKER)
 
 re: fclean all
