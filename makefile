@@ -6,7 +6,7 @@
 #    By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:22:32 by mluis-fu          #+#    #+#              #
-#    Updated: 2023/03/24 16:54:47 by mluis-fu         ###   ########.fr        #
+#    Updated: 2023/03/24 17:44:03 by mluis-fu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BONUS_SRC = bonus
 
 CHECKER_FILE = src/checker.c
 
-SRC_FILES = main.c parser.c utils.c ft_split.c time.c
+SRC_FILES = main.c parser.c utils.c ft_split.c philo_utils.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
