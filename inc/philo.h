@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:01:04 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/24 17:35:20 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:41:59 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 typedef struct s_table
 {
 	t_philo		guest[300];
+	int			philo_quanty;
 	t_rules		rules;
 	pthread_t	waiter;
 }			t_table;

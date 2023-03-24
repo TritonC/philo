@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:04:39 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/24 17:35:50 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:42:12 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,7 @@ void	init_values(t_table *table, char *argv[])
 	if (i <= 0 || i > 300)
 		return ;
 	i = 0;
-	while (i < ft_atoi(argv[1]))
-	{
-		pthread_create(table->guest[i]->philos, NULL, *f, NULL);
-		i++;
-	}
+	table->philo_quanty = ft_atoi(argv[1]);
 	table->rules.t_to_die = ft_atoi(argv[2]);
 	table->rules.t_to_eat = ft_atoi(argv[3]);
 	table->rules.t_to_sleep = ft_atoi(argv[4]);
