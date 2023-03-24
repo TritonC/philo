@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 12:04:00 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/24 17:36:41 by mluis-fu         ###   ########.fr       */
+/*   Created: 2023/03/24 16:22:27 by mluis-fu          #+#    #+#             */
+/*   Updated: 2023/03/24 16:57:01 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
+long long	time(struct timeval tv)
 {
-	t_philo			*philo;
-	t_table			*table;
-	pthread_mutex_t	mutex;
-
-	pthread_mutex_init(&mutex, NULL);
-	if (argc != 5 || argc != 6)
-		return (error_msg("invalid argument"));
-	init_values(table, argv);
-	return (1);
+	gettimeofday(&tv, NULL);
+	return ((1000 * tv.tv_sec) + (tv.tv_usec / 1000.0));
 }
+
